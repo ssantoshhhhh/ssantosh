@@ -374,7 +374,7 @@ export default function Hero() {
 
           {/* Stats */}
           <div className="hero-in hero-in-6" style={{ display: 'flex', gap: 10, marginTop: 28, flexWrap: 'wrap' }}>
-            {[{ val: '10+', label: 'Projects' }, { val: '2+', label: 'Yrs Exp.' }, { val: '15+', label: 'Technologies' }].map(s => (
+            {[{ val: '10+', label: 'Projects' }, { val: '15+', label: 'Technologies' }].map(s => (
               <div
                 key={s.label}
                 className="card-lift"

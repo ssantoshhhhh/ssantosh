@@ -294,7 +294,7 @@ export default function Skills() {
             Technical <span style={{ color: '#16a34a' }}>Skills</span>
           </h2>
           <p style={{ fontSize: 13, color: '#6b7280', maxWidth: 480, lineHeight: 1.7, marginBottom: 6 }}>
-            Skills I've been building over the past 2+ years across the full stack.
+            Skills I've been building across the full stack.
           </p>
           <div style={{ width: 48, height: 4, background: '#16a34a', borderRadius: 99, marginBottom: 40 }} />
         </Reveal>
