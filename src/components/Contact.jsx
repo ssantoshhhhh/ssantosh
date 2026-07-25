@@ -106,20 +106,29 @@ export default function Contact() {
     }
   };
 
-  const inputStyle = field => ({
-    width: '100%', padding: '10px 13px', fontSize: 13, fontWeight: 500,
-    border: `1.5px solid ${focused === field ? '#16a34a' : '#e5e7eb'}`,
-    borderRadius: 4, outline: 'none', background: '#fff', color: '#000',
-    fontFamily: 'Poppins, sans-serif',
-    boxShadow: focused === field ? '0 0 0 3px rgba(22,163,74,0.08)' : 'none',
-    transition: 'border-color 0.22s, box-shadow 0.22s, transform 0.2s cubic-bezier(0.34,1.56,0.64,1)',
-    transform: focused === field ? 'translateY(-1px)' : 'none',
+  // Gmail-style input styling
+  const gmailInputStyle = field => ({
+    width: '100%',
+    padding: '8px 0',
+    fontSize: 14,
+    fontWeight: 400,
+    border: 'none',
+    borderBottom: `1px solid ${focused === field ? '#d3d3d3' : 'transparent'}`,
+    outline: 'none',
+    background: 'transparent',
+    color: '#202124',
+    fontFamily: 'Roboto, Arial, sans-serif',
+    transition: 'border-color 0.2s',
     resize: 'none',
   });
 
-  const labelStyle = {
-    display: 'block', fontSize: 11, fontWeight: 600,
-    color: '#374151', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 5,
+  const gmailLabelStyle = {
+    fontSize: 12,
+    fontWeight: 500,
+    color: '#5f6368',
+    fontFamily: 'Roboto, Arial, sans-serif',
+    minWidth: 40,
+    paddingRight: 12,
   };
 
   return (
@@ -176,78 +185,241 @@ export default function Contact() {
         {/* ── Main 2-col: form LEFT, code preview RIGHT ── */}
         <div className="contact-main-grid">
 
-          {/* ── LEFT: Form ── */}
+          {/* ── LEFT: Gmail-style Form ── */}
           <Reveal variant="left">
-            <div style={{ border: '1.5px solid #e5e7eb', borderRadius: 6, overflow: 'hidden', background: '#fff', boxShadow: '0 4px 24px rgba(0,0,0,0.05)' }}>
-              {/* Window header */}
-              <div style={{ background: '#f9fafb', borderBottom: '1px solid #e5e7eb', padding: '10px 18px', display: 'flex', alignItems: 'center', gap: 8 }}>
-                <div style={{ display: 'flex', gap: 6 }}>
-                  {['#ff5f57','#febc2e','#28c840'].map(c => <span key={c} style={{ width: 11, height: 11, borderRadius: '50%', background: c, display: 'inline-block' }} />)}
-                </div>
-                <span style={{ fontSize: 11, fontFamily: MONO, color: '#9ca3af', marginLeft: 4 }}>send_message.sh</span>
+            <div style={{ 
+              background: '#fff', 
+              borderRadius: 8, 
+              boxShadow: '0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2)',
+              overflow: 'hidden',
+              maxWidth: 680,
+            }}>
+              {/* Gmail Header */}
+              <div style={{ 
+                background: '#404040', 
+                color: '#fff', 
+                padding: '12px 24px', 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'space-between',
+                fontFamily: 'Roboto, Arial, sans-serif',
+              }}>
+                <span style={{ fontSize: 14, fontWeight: 500 }}>New Message</span>
               </div>
 
-              <form onSubmit={handleSubmit} style={{ padding: '22px 22px', display: 'flex', flexDirection: 'column', gap: 14 }}>
-                <div className="contact-name-row">
-                  <div>
-                    <label style={labelStyle}>Name</label>
-                    <input type="text" name="name" value={form.name} onChange={handleChange}
-                      onFocus={() => setFocused('name')} onBlur={() => setFocused('')}
-                      placeholder="Your name" required style={inputStyle('name')} />
-                  </div>
-                  <div>
-                    <label style={labelStyle}>Email</label>
-                    <input type="email" name="email" value={form.email} onChange={handleChange}
-                      onFocus={() => setFocused('email')} onBlur={() => setFocused('')}
-                      placeholder="you@email.com" required style={inputStyle('email')} />
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
+                {/* To field */}
+                <div style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  padding: '8px 24px', 
+                  borderBottom: '1px solid #e5e5e5',
+                  minHeight: 46,
+                }}>
+                  <label style={gmailLabelStyle}>To</label>
+                  <input 
+                    type="text" 
+                    value="santoshkumar90101s@gmail.com"
+                    disabled
+                    style={{
+                      ...gmailInputStyle('to'),
+                      color: '#5f6368',
+                      cursor: 'not-allowed',
+                      borderBottom: 'none',
+                    }}
+                  />
+                </div>
+
+                {/* From (Name + Email combined) */}
+                <div style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  padding: '8px 24px', 
+                  borderBottom: '1px solid #e5e5e5',
+                  minHeight: 46,
+                }}>
+                  <label style={gmailLabelStyle}>From</label>
+                  <div style={{ display: 'flex', gap: 8, width: '100%', alignItems: 'center' }}>
+                    <input 
+                      type="text" 
+                      name="name" 
+                      value={form.name} 
+                      onChange={handleChange}
+                      onFocus={() => setFocused('name')} 
+                      onBlur={() => setFocused('')}
+                      placeholder="Your name" 
+                      required 
+                      style={{
+                        ...gmailInputStyle('name'),
+                        flex: 1,
+                        borderBottom: 'none',
+                      }}
+                    />
+                    <span style={{ color: '#5f6368', fontSize: 14 }}>&lt;</span>
+                    <input 
+                      type="email" 
+                      name="email" 
+                      value={form.email} 
+                      onChange={handleChange}
+                      onFocus={() => setFocused('email')} 
+                      onBlur={() => setFocused('')}
+                      placeholder="your@email.com" 
+                      required 
+                      style={{
+                        ...gmailInputStyle('email'),
+                        flex: 2,
+                        borderBottom: 'none',
+                      }}
+                    />
+                    <span style={{ color: '#5f6368', fontSize: 14 }}>&gt;</span>
                   </div>
                 </div>
-                <div>
-                  <label style={labelStyle}>Subject</label>
-                  <input type="text" name="subject" value={form.subject} onChange={handleChange}
-                    onFocus={() => setFocused('subject')} onBlur={() => setFocused('')}
-                    placeholder="What's this about?" required style={inputStyle('subject')} />
+
+                {/* Subject field */}
+                <div style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  padding: '8px 24px', 
+                  borderBottom: '1px solid #e5e5e5',
+                  minHeight: 46,
+                }}>
+                  <label style={gmailLabelStyle}>Subject</label>
+                  <input 
+                    type="text" 
+                    name="subject" 
+                    value={form.subject} 
+                    onChange={handleChange}
+                    onFocus={() => setFocused('subject')} 
+                    onBlur={() => setFocused('')}
+                    placeholder="" 
+                    required 
+                    style={{
+                      ...gmailInputStyle('subject'),
+                      borderBottom: 'none',
+                    }}
+                  />
                 </div>
-                <div>
-                  <label style={labelStyle}>Message</label>
-                  <textarea name="message" value={form.message} onChange={handleChange}
-                    onFocus={() => setFocused('message')} onBlur={() => setFocused('')}
-                    rows={5} placeholder="Tell me about your project..."
-                    required style={inputStyle('message')} />
+
+                {/* Message body */}
+                <div style={{ padding: '16px 24px', minHeight: 280 }}>
+                  <textarea 
+                    name="message" 
+                    value={form.message} 
+                    onChange={handleChange}
+                    onFocus={() => setFocused('message')} 
+                    onBlur={() => setFocused('')}
+                    placeholder="Type your message here..."
+                    required 
+                    style={{
+                      ...gmailInputStyle('message'),
+                      minHeight: 240,
+                      fontFamily: 'Arial, sans-serif',
+                      fontSize: 14,
+                      lineHeight: 1.6,
+                    }}
+                  />
                 </div>
 
                 {/* Status messages */}
                 {status === 'error' && (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 14px', background: '#fff5f5', border: '1px solid #fecaca', borderRadius: 4, fontSize: 12, color: '#dc2626' }}>
-                    <FiAlertCircle size={14} /> {errMsg}
+                  <div style={{ 
+                    margin: '0 24px 16px', 
+                    padding: '12px 16px', 
+                    background: '#fce8e6', 
+                    border: '1px solid #f4c7c3', 
+                    borderRadius: 4, 
+                    fontSize: 13, 
+                    color: '#c5221f',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 8,
+                  }}>
+                    <FiAlertCircle size={16} /> {errMsg}
                   </div>
                 )}
                 {status === 'sent' && (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 14px', background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: 4, fontSize: 12, color: '#15803d' }}>
-                    <FiCheckCircle size={14} /> Message sent! I'll reply within 24 hours.
+                  <div style={{ 
+                    margin: '0 24px 16px', 
+                    padding: '12px 16px', 
+                    background: '#e6f4ea', 
+                    border: '1px solid #a8dab5', 
+                    borderRadius: 4, 
+                    fontSize: 13, 
+                    color: '#137333',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 8,
+                  }}>
+                    <FiCheckCircle size={16} /> Message sent successfully!
                   </div>
                 )}
 
-                <button
-                  type="submit"
-                  disabled={status === 'sending'}
-                  className="btn-press"
-                  style={{
-                    padding: '12px', borderRadius: 4, border: 'none', cursor: status === 'sending' ? 'not-allowed' : 'pointer',
-                    background: status === 'sent' ? '#15803d' : status === 'error' ? '#dc2626' : '#16a34a',
-                    color: '#fff', fontSize: 13, fontWeight: 700, fontFamily: 'Poppins, sans-serif',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-                    opacity: status === 'sending' ? 0.75 : 1,
-                    transition: 'background 0.22s, opacity 0.22s',
-                  }}
-                  onMouseEnter={e => { if (!['sending','sent'].includes(status)) e.currentTarget.style.background = '#15803d'; }}
-                  onMouseLeave={e => { if (!['sent'].includes(status)) e.currentTarget.style.background = status === 'error' ? '#dc2626' : '#16a34a'; }}
-                >
-                  {status === 'sending' && <><span style={{ display:'inline-block', width:14,height:14,border:'2px solid rgba(255,255,255,0.4)',borderTopColor:'#fff',borderRadius:'50%',animation:'spin 0.7s linear infinite' }} /> Sending…</>}
-                  {status === 'sent'    && <><FiCheckCircle size={14} /> Message Sent!</>}
-                  {status === 'error'   && <><FiAlertCircle size={14} /> Try Again</>}
-                  {status === 'idle'    && <><span>Send Message</span><FiSend size={13} /></>}
-                </button>
+                {/* Footer with Send button */}
+                <div style={{ 
+                  padding: '12px 24px 16px', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: 12,
+                }}>
+                  <button
+                    type="submit"
+                    disabled={status === 'sending'}
+                    style={{
+                      padding: '8px 24px',
+                      borderRadius: 4,
+                      border: 'none',
+                      cursor: status === 'sending' ? 'not-allowed' : 'pointer',
+                      background: status === 'sent' ? '#188038' : '#1a73e8',
+                      color: '#fff',
+                      fontSize: 14,
+                      fontWeight: 500,
+                      fontFamily: 'Roboto, Arial, sans-serif',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 8,
+                      opacity: status === 'sending' ? 0.7 : 1,
+                      transition: 'background 0.2s, box-shadow 0.2s',
+                      boxShadow: '0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15)',
+                    }}
+                    onMouseEnter={e => {
+                      if (status !== 'sending') {
+                        e.currentTarget.style.background = status === 'sent' ? '#137333' : '#1765cc';
+                        e.currentTarget.style.boxShadow = '0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15)';
+                      }
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.background = status === 'sent' ? '#188038' : '#1a73e8';
+                      e.currentTarget.style.boxShadow = '0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15)';
+                    }}
+                  >
+                    {status === 'sending' && (
+                      <>
+                        <span style={{ 
+                          display:'inline-block', 
+                          width:14, 
+                          height:14, 
+                          border:'2px solid rgba(255,255,255,0.3)', 
+                          borderTopColor:'#fff', 
+                          borderRadius:'50%', 
+                          animation:'spin 0.7s linear infinite' 
+                        }} />
+                        Sending...
+                      </>
+                    )}
+                    {status === 'sent' && (
+                      <>
+                        <FiCheckCircle size={16} />
+                        Sent
+                      </>
+                    )}
+                    {(status === 'idle' || status === 'error') && (
+                      <>
+                        Send
+                        <FiSend size={14} />
+                      </>
+                    )}
+                  </button>
+                </div>
               </form>
             </div>
           </Reveal>
@@ -278,19 +450,11 @@ export default function Contact() {
           gap: 24px;
           align-items: start;
         }
-        .contact-name-row {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 12px;
-        }
 
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
           .contact-main-grid {
             grid-template-columns: 1fr !important;
             gap: 20px !important;
-          }
-          .contact-name-row {
-            grid-template-columns: 1fr !important;
           }
         }
       `}</style>
