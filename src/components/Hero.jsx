@@ -45,7 +45,7 @@ const CMDS = {
     { type: 'row',   k: 'Role',     v: 'Full Stack Developer | MERN Stack' },
     { type: 'row',   k: 'College',  v: 'SRKR Engineering College, Bhimavaram' },
     { type: 'row',   k: 'Location', v: 'Andhra Pradesh, India' },
-    { type: 'row',   k: 'Email',    v: 'santoshkumar90101s@gmail.com' },
+    { type: 'row',   k: 'Email',    v: 'seelaboinasantosh@gmail.com' },
     { type: 'row',   k: 'Phone',    v: '+91 8639081207' },
     { type: 'green', text: 'Passionate about building scalable, user-centric applications.' },
   ],
@@ -64,7 +64,7 @@ const CMDS = {
   ],
   contact: [
     { type: 'head',  text: 'Contact' },
-    { type: 'row',   k: 'Email',   v: 'santoshkumar90101s@gmail.com' },
+    { type: 'row',   k: 'Email',   v: 'seelaboinasantosh@gmail.com' },
     { type: 'row',   k: 'Phone',   v: '+91 8639081207' },
     { type: 'row',   k: 'GitHub',  v: 'github.com/ssantoshhhhh' },
     { type: 'row',   k: 'LinkedIn',v: 'linkedin.com/in/santosh-seelaboina-56b5492b8' },
@@ -73,7 +73,7 @@ const CMDS = {
   ],
   resume: [
     { type: 'green', text: '→ Opening resume...' },
-    { type: '__open', url: '/resume.pdf' },
+    { type: '__open', url: '/SantoshSeelaboina_Resume.pdf' },
   ],
   clear: [{ type: '__clear' }],
 };
@@ -309,7 +309,7 @@ export default function Hero() {
           {/* CTAs */}
           <div className="hero-in hero-in-5" style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 36 }}>
             <a
-              href="/resume.pdf"
+              href="/SantoshSeelaboina_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-press"
@@ -348,7 +348,7 @@ export default function Hero() {
               { Icon: FiGithub,    href: 'https://github.com/ssantoshhhhh',                             label: 'GitHub' },
               { Icon: FiLinkedin,  href: 'https://www.linkedin.com/in/santosh-seelaboina-56b5492b8/',   label: 'LinkedIn' },
               { Icon: FiInstagram, href: 'https://instagram.com/ssantoshhhhh',                          label: 'Instagram' },
-              { Icon: FiMail,      href: 'mailto:santoshkumar90101s@gmail.com',                         label: 'Email' },
+              { Icon: FiMail,      href: 'mailto:seelaboinasantosh@gmail.com',                         label: 'Email' },
             ].map(s => (
               <a
                 key={s.label}

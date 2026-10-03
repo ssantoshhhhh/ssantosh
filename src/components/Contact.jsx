@@ -28,7 +28,7 @@ function CodePreview({ form, status }) {
     <>&nbsp;&nbsp;<T c="#79c0ff">email</T><T c="#e6edf3">{'   : '}</T><T c={e.live ? '#a5d6ff' : '#484f58'}>{e.val}</T><T c="#e6edf3">,</T></>,
     <>&nbsp;&nbsp;<T c="#79c0ff">subject</T><T c="#e6edf3">{' : '}</T><T c={s.live ? '#a5d6ff' : '#484f58'}>{s.val}</T><T c="#e6edf3">,</T></>,
     <>&nbsp;&nbsp;<T c="#79c0ff">message</T><T c="#e6edf3">{': '}</T><T c={m.live ? '#a5d6ff' : '#484f58'}>{m.val}</T><T c="#e6edf3">,</T></>,
-    <>&nbsp;&nbsp;<T c="#79c0ff">to</T><T c="#e6edf3">{'      : '}</T><T c="#a5d6ff">{"\"santoshkumar90101s@gmail.com\""}</T><T c="#e6edf3">,</T></>,
+    <>&nbsp;&nbsp;<T c="#79c0ff">to</T><T c="#e6edf3">{'      : '}</T><T c="#a5d6ff">{"\"seelaboinasantosh@gmail.com\""}</T><T c="#e6edf3">,</T></>,
     <><T c="#ff7b72">{'};'}</T></>,
     null,
     <><T c="#d2a8ff">await</T><T c="#e6edf3">{' sendMail('}</T><T c="#ffa657">msg</T><T c="#e6edf3">{')'}</T><T c="#8b949e">{';  // nodemailer ✓'}</T></>,
@@ -153,7 +153,7 @@ export default function Contact() {
         <Reveal delay={0.05}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12, marginBottom: 36 }}>
             {[
-              { Icon: FiMail,   label: 'Email',   value: 'santoshkumar90101s@gmail.com', href: 'mailto:santoshkumar90101s@gmail.com' },
+              { Icon: FiMail,   label: 'Email',   value: 'seelaboinasantosh@gmail.com', href: 'mailto:seelaboinasantosh@gmail.com' },
               { Icon: FiPhone,  label: 'Phone',   value: '+91 8639081207',               href: 'tel:+918639081207' },
               { Icon: FiMapPin, label: 'Address', value: 'Bhimavaram, Andhra Pradesh',   href: null },
             ].map(item => (
@@ -219,7 +219,7 @@ export default function Contact() {
                   <label style={gmailLabelStyle}>To</label>
                   <input 
                     type="text" 
-                    value="santoshkumar90101s@gmail.com"
+                    value="seelaboinasantosh@gmail.com"
                     disabled
                     style={{
                       ...gmailInputStyle('to'),

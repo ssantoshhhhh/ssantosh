@@ -40,7 +40,7 @@ export default function Footer() {
               { Icon: FiGithub,    title: 'GitHub',    href: 'https://github.com/ssantoshhhhh' },
               { Icon: FiLinkedin,  title: 'LinkedIn',  href: 'https://www.linkedin.com/in/santosh-seelaboina-56b5492b8/' },
               { Icon: FiInstagram, title: 'Instagram', href: 'https://instagram.com/ssantoshhhhh' },
-              { Icon: FiMail,      title: 'Email',     href: 'mailto:santoshkumar90101s@gmail.com' },
+              { Icon: FiMail,      title: 'Email',     href: 'mailto:seelaboinasantosh@gmail.com' },
             ].map(s => (
               <a key={s.title} href={s.href} target="_blank" rel="noopener noreferrer" title={s.title}
                 style={{ width: 32, height: 32, border: '1.5px solid #e5e7eb', borderRadius: 3, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#6b7280', textDecoration: 'none', transition: 'all 0.2s' }}
